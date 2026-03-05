@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expense Panel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Login</h2>
+
+<input id="loginMobile" placeholder="Mobile Number">
+<input id="loginPass" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<h3>Create Account</h3>
+
+<input id="name" placeholder="Name">
+<input id="mobile" placeholder="Mobile">
+<input id="dob" type="date">
+<input id="pass" type="password" placeholder="Password">
+<input id="cpass" type="password" placeholder="Confirm Password">
+
+<button onclick="signup()">Sign Up</button>
+
+<script src="app.js"></script>
+
+</body>
+</html>

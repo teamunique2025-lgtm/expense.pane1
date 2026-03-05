@@ -1,0 +1,79 @@
+document.getElementById("date") &&
+(document.getElementById("date").valueAsDate=new Date())
+
+function signup(){
+
+let name=document.getElementById("name").value
+let mobile=document.getElementById("mobile").value
+let pass=document.getElementById("pass").value
+let cpass=document.getElementById("cpass").value
+
+if(pass!==cpass){
+alert("Password mismatch")
+return
+}
+
+let users=JSON.parse(localStorage.getItem("users"))||[]
+
+users.push({name,mobile,pass})
+
+localStorage.setItem("users",JSON.stringify(users))
+
+alert("Account created")
+}
+
+function login(){
+
+let mobile=document.getElementById("loginMobile").value
+let pass=document.getElementById("loginPass").value
+
+if(mobile==="Depr" && pass==="Depr123"){
+localStorage.setItem("admin","true")
+location="admin.html"
+return
+}
+
+let users=JSON.parse(localStorage.getItem("users"))||[]
+
+let user=users.find(u=>u.mobile===mobile && u.pass===pass)
+
+if(user){
+localStorage.setItem("user",mobile)
+location="dashboard.html"
+}else{
+alert("Invalid login")
+}
+}
+
+function saveExpense(){
+
+let product=document.getElementById("product").value
+let price=document.getElementById("price").value
+let units=document.getElementById("units").value
+
+let total=price*units
+
+let expenses=JSON.parse(localStorage.getItem("expenses"))||[]
+
+expenses.push({product,price,units,total})
+
+localStorage.setItem("expenses",JSON.stringify(expenses))
+
+showExpenses()
+}
+
+function showExpenses(){
+
+let expenses=JSON.parse(localStorage.getItem("expenses"))||[]
+
+let html=""
+
+expenses.forEach(e=>{
+html+=`<p>${e.product} - ₹${e.total}</p>`
+})
+
+document.getElementById("list").innerHTML=html
+
+}
+
+showExpenses()
